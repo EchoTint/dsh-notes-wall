@@ -12,12 +12,12 @@ window.__ModuleLoader__.load({
     /* The notes are paper: their colors are content, not chrome. Everything
        around them is drawn with the host's semantic theme tokens. */
     const COLORS = [
-      { id: 'amber', paper: '#ffe9a6', ink: '#4a3810', edge: '#f2d68a' },
-      { id: 'rose', paper: '#ffdde3', ink: '#4d2830', edge: '#f4c4cd' },
-      { id: 'mint', paper: '#d8f4e2', ink: '#1e4a34', edge: '#b9e6cc' },
-      { id: 'sky', paper: '#d8ecff', ink: '#1d3a57', edge: '#b8dcf7' },
-      { id: 'lilac', paper: '#e6e1ff', ink: '#332b5c', edge: '#d2caf8' },
-      { id: 'sand', paper: '#f1e9d8', ink: '#43382a', edge: '#e0d3ba' },
+      { id: 'amber', paper: '#f7e7c2', ink: '#4a3810', edge: '#ebd9ac', pin: '#edcba0, #c29a4e 55%, #8e6b28' },
+      { id: 'rose', paper: '#f5dfde', ink: '#5a3138', edge: '#ebd0cf', pin: '#d9a3a6, #a2626a 55%, #6e3d45' },
+      { id: 'mint', paper: '#dfede2', ink: '#2f4c3a', edge: '#cfe0d4', pin: '#afcbb4, #7a9c83 55%, #4e6e58' },
+      { id: 'sky', paper: '#dee9f2', ink: '#2f4557', edge: '#cfdeea', pin: '#a9c3d8, #6f8fa9 55%, #456079' },
+      { id: 'lilac', paper: '#e6e2f0', ink: '#453a5c', edge: '#d8d2e6', pin: '#c3b7d4, #8c7ca6 55%, #5e5177' },
+      { id: 'sand', paper: '#f0e8d8', ink: '#453c2c', edge: '#e2d7c1', pin: '#cdbea4, #9c8a6c 55%, #6e5f45' },
     ];
 
     const zh = {
@@ -129,6 +129,7 @@ window.__ModuleLoader__.load({
   min-height: 100%;
   overflow: auto;
   padding: calc(var(--dsh-frame-top-clearance, 0px) + 28px) 30px 72px;
+  background: color-mix(in srgb, var(--dsw-alias-bg-base) 94%, #8a7250);
   color: var(--dsw-alias-label-primary);
   font-family: var(--dsw-font-family-text, inherit);
   scrollbar-gutter: stable;
@@ -195,7 +196,7 @@ window.__ModuleLoader__.load({
   height: 32px;
   padding: 0 13px;
   border: 0;
-  border-radius: 16px;
+  border-radius: 6px;
   font: inherit;
   font-size: 13px;
   line-height: 20px;
@@ -241,7 +242,7 @@ window.__ModuleLoader__.load({
   width: min(320px, 46vw);
   height: 34px;
   padding: 0 10px;
-  border-radius: 11px;
+  border-radius: 6px;
   box-shadow: inset 0 0 0 .5px var(--dsw-alias-border-l1);
   color: var(--dsw-alias-label-secondary);
   transition: box-shadow .15s;
@@ -327,8 +328,8 @@ window.__ModuleLoader__.load({
 /* ---- the wall ---- */
 
 .nw-wall {
-  columns: 264px;
-  column-gap: 18px;
+  columns: 248px;
+  column-gap: 22px;
 }
 
 .nw-note {
@@ -336,47 +337,54 @@ window.__ModuleLoader__.load({
   isolation: isolate;
   break-inside: avoid;
   page-break-inside: avoid;
-  margin: 0 0 18px;
-  padding: 20px 16px 10px;
+  margin: 0 0 22px;
+  padding: 25px 17px 12px;
   border-radius: 3px;
-  background: var(--nw-paper, #ffe9a6);
+  background: var(--nw-paper, #f7e7c2);
   color: var(--nw-ink, #4a3810);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .55),
-    0 10px 22px -14px rgba(36, 28, 10, .55),
-    0 2px 4px -2px rgba(36, 28, 10, .18);
+    0 16px 26px -20px rgba(60, 48, 24, .6),
+    0 2px 4px -2px rgba(60, 48, 24, .2);
   transform: rotate(var(--nw-tilt, 0deg));
   transition: transform .18s ease, box-shadow .18s ease;
 }
 
-.nw-note::before {
-  content: "";
+/* The pin is the paper's hardware: a small metal dome in the note's own
+   colour, so the wall still reads as six separate sheets. */
+.nw-pin {
   position: absolute;
-  top: -7px;
+  top: -6.5px;
   left: 50%;
-  width: 54px;
-  height: 15px;
-  border-radius: 1px;
-  transform: translateX(-50%) rotate(-1.4deg);
-  background: linear-gradient(180deg, rgba(255, 255, 255, .66), rgba(255, 255, 255, .38));
-  box-shadow: 0 1px 2px rgba(60, 48, 20, .16);
+  z-index: 2;
+  width: 13px;
+  height: 13px;
+  margin-left: -6.5px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255, 251, 240, 1) 0%, rgba(255, 251, 240, 0) 42%),
+    linear-gradient(180deg, var(--nw-pin, #edcba0));
+  box-shadow:
+    0 1px 2px rgba(46, 34, 14, .38),
+    inset 0 1px 1px rgba(255, 255, 255, .5),
+    inset 0 -1.5px 2px rgba(0, 0, 0, .26);
   pointer-events: none;
 }
 
 .nw-note:hover,
 .nw-note:focus-within {
-  transform: rotate(0deg) translateY(-1px);
+  transform: rotate(0deg) translateY(-2px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .55),
-    0 18px 30px -18px rgba(36, 28, 10, .6),
-    0 3px 6px -3px rgba(36, 28, 10, .22);
+    0 22px 32px -20px rgba(60, 48, 24, .62),
+    0 3px 6px -3px rgba(60, 48, 24, .24);
 }
 
 .nw-note:focus-within {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .55),
-    0 18px 30px -18px rgba(36, 28, 10, .6),
-    0 0 0 2px color-mix(in srgb, var(--dsw-alias-brand-primary) 45%, transparent);
+    0 22px 32px -20px rgba(60, 48, 24, .62),
+    0 0 0 2px var(--dsw-alias-brand-primary);
 }
 
 .nw-input {
@@ -409,9 +417,10 @@ window.__ModuleLoader__.load({
 
 .nw-time {
   color: inherit;
-  opacity: .45;
-  font-size: 11.5px;
-  font-variant-numeric: tabular-nums;
+  opacity: .5;
+  font: 500 10px/1.5 var(--dsw-font-family-code, ui-monospace, monospace);
+  letter-spacing: .06em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -1033,9 +1042,11 @@ window.__ModuleLoader__.load({
           '--nw-paper': color.paper,
           '--nw-ink': color.ink,
           '--nw-edge': color.edge,
+          '--nw-pin': color.pin,
           '--nw-tilt': tiltOf(note.id) + 'deg',
         },
       },
+      h('span', { className: 'nw-pin', 'aria-hidden': 'true' }),
       h('textarea', {
         ref: textRef,
         className: 'nw-input',
