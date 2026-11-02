@@ -4,6 +4,10 @@ A sticky-notes wall pinned to the DSH sidebar: click the icon, capture the thoug
 
 挂在 DSH 左侧栏的一面便签墙：随手写下想法、灵感和待办，停笔即存。
 
+![Notes Wall](screenshot-1.png)
+
+![Tag filtering](screenshot-2.png)
+
 ## What it does / 功能
 
 - **Sidebar entry + full page.** The plugin registers an icon in `sidebar.panellist` (order `12`) and a panel page on the `main` slot under its own `notes-wall` key — it never takes over the conversation panel.
@@ -43,6 +47,10 @@ client.js         ModuleLoader factory: locale dictionaries, CSS, NoteCard, page
 locale/zh.json    meta.title / meta.description (shown by the plugin manager)
 locale/en.json
 icon.svg          Original notes artwork, 64×64
+icon-180.png      Storefront tile, 180×180
+screenshots.json  Storefront screenshots (1–8 image paths)
+screenshot-1.png  The wall itself
+screenshot-2.png  Filtered by #插件
 ```
 
 ## Development notes / 开发注意
