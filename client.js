@@ -207,7 +207,7 @@ window.__ModuleLoader__.load({
 
 .nw-btn-primary {
   background: var(--dsw-alias-brand-primary);
-  color: #fff;
+  color: var(--dsw-alias-brand-primary-invert, #fff);
   font-weight: 500;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .14);
 }
@@ -529,7 +529,7 @@ window.__ModuleLoader__.load({
 
 .nw-confirm-yes {
   background: var(--dsw-alias-state-error-primary);
-  color: #fff;
+  color: var(--dsw-alias-bg-base, #fff);
 }
 
 .nw-confirm-no {
