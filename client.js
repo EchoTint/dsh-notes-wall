@@ -207,7 +207,7 @@ window.__ModuleLoader__.load({
 
 .nw-btn-primary {
   background: var(--dsw-alias-brand-primary);
-  color: var(--dsw-alias-brand-primary-invert, #fff);
+  color: var(--dsw-alias-label-primary-foreground, #fff);
   font-weight: 500;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .14);
 }
