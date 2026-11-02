@@ -1,10 +1,17 @@
 {
-  "name": "@local/dsh-notes-wall",
+  "name": "dsh-notes-wall",
   "version": "1.0.0",
-  "private": true,
   "description": "A sticky-notes wall in the sidebar: capture an idea the moment it arrives.",
   "license": "MIT",
-  "author": "evil3",
+  "author": "EchoTint",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EchoTint/dsh-notes-wall.git"
+  },
+  "homepage": "https://github.com/EchoTint/dsh-notes-wall#readme",
+  "bugs": {
+    "url": "https://github.com/EchoTint/dsh-notes-wall/issues"
+  },
   "keywords": [
     "dsh-plugin",
     "dsh",

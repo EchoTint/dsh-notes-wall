@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-  id: '@local/dsh-notes-wall',
+  id: 'dsh-notes-wall',
   factory(require) {
     const React = require('react');
     const h = React.createElement;

@@ -27,6 +27,7 @@ The package ships a `dsh.bundle` manifest, so it is installable like any DSH plu
 
 1. Plugin Manager — install from this folder (or from the GitHub repo once published).
 2. Or, from a checkout: `dsh plugin add <path-or-git-url>`.
+3. Or, straight from GitHub: `dsh plugin add https://github.com/EchoTint/dsh-notes-wall`.
 
 After the first install (and after every edit to `client.js`), **restart DSH** so the new JS generation is loaded; then refresh the page and the notebook icon appears in the sidebar.
 
